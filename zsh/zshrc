@@ -1,0 +1,69 @@
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' menu selection
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/teh/.zshrc'
+
+export EDITOR="/usr/bin/vim"
+export PRJ="$HOME/Desktop/Projects"
+
+bindkey '^[[1;5C' forward-word       # ctrl + ->
+bindkey '^[[1;5D' backward-word      # ctrl + <-
+bindkey '^H' backward-kill-word 	 # delete whole word on ctrl + backspace
+WORDCHARS=${WORDCHARS//\/}
+
+autoload -Uz compinit && compinit
+zmodload zsh/complist
+_comp_options+=(globdots)
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+setopt  autocd autopushd
+autoload -Uz vcs_info
+
+precmd() { 
+	# Configure git
+	vcs_info 
+	# Set terminal name to the working directory
+	print -Pn "\e]0;$PWD\a"
+}
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats " %B%F{magenta}(%b)"
+ 
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+
+autoload -U colors && colors
+
+# Show last exit code if it isn't 0
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="%F{red}[$LAST_EXIT_CODE]"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
+if [ -x /usr/bin/dircolors ]; then
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+fi
+
+PS1='%B%F{green}%n%F{white}@%F{red}%M %F{blue}%~${vcs_info_msg_0_}$(check_last_exit_code)%b%F{white}> '
+
+if [ -f $HOME/.zsh_aliases ]; then
+	source $HOME/.zsh_aliases
+fi
+
+setopt hist_ignore_dups
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
+# Needs zsh-syntax-highlighting and zsh-autosuggestions to be installed
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

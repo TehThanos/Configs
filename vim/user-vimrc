@@ -1,0 +1,20 @@
+command W execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+set autoread
+syntax on
+filetype plugin indent on
+
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set rtp+=/usr/lib/python3/dist-packages/powerline/bindings/vim/
+
+set tabstop=4
+set autoindent
+set wrap
+set number
+set title
+set laststatus=2
+set hlsearch
+hi Search ctermbg=Blue
+hi Search ctermfg=White

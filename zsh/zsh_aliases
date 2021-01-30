@@ -18,6 +18,7 @@ alias ports='sudo netstat -tulpn | grep LISTEN'
 alias upgradable='apt list --upgradable'
 alias prj='cd $PRJ'
 alias git-log='git log --all --graph --decorate --oneline'
+alias ssh-hosts='grep -P "^Host ([^*]+)$" /home/teh/.ssh/config | sed "s/Host //"'
 
 #Program aliases
 alias shutdown='/sbin/shutdown'

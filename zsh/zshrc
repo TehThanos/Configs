@@ -28,6 +28,15 @@ precmd() {
 	vcs_info 
 	# Set terminal name to the working directory
 	print -Pn "\e]0;$PWD\a"
+	
+	cols="$(tput cols)";
+	pwdlength=${#PWD}
+	if (( $cols/2 < $pwdlength )); then
+    	PS1="|%B%F{green}%n%F{white}@%F{red}%M %F{white}[ %F{blue}%~${vcs_info_msg_0_}$(check_last_exit_code)%b%F{white} ] "$'\n'"└> ";
+	else
+		PS1='%B%F{green}%n%F{white}@%F{red}%M %F{blue}%~${vcs_info_msg_0_}$(check_last_exit_code)%b%F{white}> ';
+	fi
+
 }
 
 # Format the vcs_info_msg_0_ variable

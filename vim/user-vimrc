@@ -1,17 +1,47 @@
-
-
 command W execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" Map CTRL-Z to undo
+map <C-z> :u<CR>
+map! <C-z> <ESC> :u<CR>
+" Map CTRL-U to redo
+map <C-u> <C-R>
+map! <C-u> <ESC> <C-R>
+" Map CTRL-S to save
+map <C-s> :w<CR>
+map! <C-s> <ESC> :w<CR>
+" Close vim with CTRL-C
+map <C-c> :q<CR>
+map! <C-c> <ESC> :q<CR>
+" Search with CTRL-F
+map <C-f> /
+map! <C-f> <ESC> /
+" Cut line with CTRL-X 
+map <C-x> dd
+map! <C-x> <ESC> dd
+" Select the whole file with CTRL-A 
+map <C-a> ggVG
+map! <C-a> <ESC> ggVG
+" Delete the previous word with CTRL-BACKSPACE
+noremap! <C-h> <C-w>
+" Duplicate line with CTRL-D
+map <C-d> yyP
+map! <C-d> <ESC> yyP
+" Move line up/down with CTRL
+map <C-UP> :m-2<CR>
+map! <C-UP> <ESC> :m-2<CR>
+map <C-DOWN> :m+1<CR>
+map! <C-DOWN> <ESC> :m+1<CR>
 
 set autoread
 syntax on
 filetype plugin indent on
 
-" Needs powerline installed
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 set rtp+=/usr/lib/python3/dist-packages/powerline/bindings/vim/
 
+set clipboard=unnamedplus
 set tabstop=4
 set autoindent
 set wrap

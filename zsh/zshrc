@@ -62,8 +62,6 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 fi
 
-PS1='%B%F{green}%n%F{white}@%F{red}%M %F{blue}%~${vcs_info_msg_0_}$(check_last_exit_code)%b%F{white}> '
-
 if [ -f $HOME/.zsh_aliases ]; then
 	source $HOME/.zsh_aliases
 fi
@@ -76,3 +74,5 @@ SAVEHIST=1000
 # Needs zsh-syntax-highlighting and zsh-autosuggestions to be installed
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Needs command-not-found to be installed
+source /etc/zsh_command_not_found

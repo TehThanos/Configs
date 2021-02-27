@@ -5,6 +5,7 @@ zstyle ':completion:*' menu selection
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '/home/teh/.zshrc'
 
+umask 027
 export EDITOR="/usr/bin/vim"
 export PRJ="$HOME/Desktop/Projects"
 

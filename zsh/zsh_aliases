@@ -21,6 +21,7 @@ alias ports='sudo netstat -tulpn | grep LISTEN'
 alias upgradable='apt list --upgradable'
 alias prj='cd $PRJ'
 alias git-log='git log --all --graph --decorate --oneline'
+alias git-gc-all='git -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc'
 alias ssh-hosts='grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed "s/Host //"'
 
 #Program aliases

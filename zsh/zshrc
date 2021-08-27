@@ -6,6 +6,10 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle :compinstall filename '/home/teh/.zshrc'
 
 umask 027
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export EDITOR="/usr/bin/vim"
 export PRJ="$HOME/Desktop/Projects"
 

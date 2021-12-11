@@ -1,0 +1,10 @@
+[commit]
+	gpgsign = true
+[alias]
+	slog = log --all --decorate --oneline --graph
+	info = show --shortstat
+	changes = show --name-only
+	introduced = log --diff-filter=A
+	unstage = restore --staged
+[init]
+	defaultBranch = main

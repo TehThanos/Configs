@@ -75,6 +75,7 @@ if [ -f $HOME/.zsh_aliases ]; then
 fi
 
 setopt hist_ignore_dups
+setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000

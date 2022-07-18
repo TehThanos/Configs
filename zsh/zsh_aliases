@@ -22,7 +22,8 @@ alias upgradable='apt list --upgradable'
 alias prj='cd $PRJ'
 alias git-log='git log --all --graph --decorate --oneline'
 alias git-gc-all='git -c gc.reflogExpire=0 -c gc.reflogExpireUnreachable=0 -c gc.rerereresolved=0 -c gc.rerereunresolved=0 -c gc.pruneExpire=now gc'
-alias ssh-hosts='grep -P "^Host ([^*]+)$" $HOME/.ssh/config | sed "s/Host //"'
+alias ssh-hosts='grep -E "Host (\S+)$" $HOME/.ssh/config | sed "s/Host //"'
+alias ssh-hosts-ip='grep -E "Host(Name)? [^\n]+" $HOME/.ssh/config | sed -e "s/Host \(\S\+\)/\1:/g" | sed -e "s/\sHostName/  Ip:/g"'
 
 #Program aliases
 alias shutdown='/sbin/shutdown'

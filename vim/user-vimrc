@@ -12,6 +12,8 @@ map! <C-s> <ESC> :w<CR>
 " Close vim with CTRL-C
 map <C-c> :q<CR>
 map! <C-c> <ESC> :q<CR>
+" Copy to clipboard with CTRL-C when in visual mode
+vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
 " Search with CTRL-F
 map <C-f> /
 map! <C-f> <ESC> /

@@ -90,5 +90,6 @@ fi
 # Needs zsh-syntax-highlighting and zsh-autosuggestions to be installed
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# Needs command-not-found to be installed
-source /etc/zsh_command_not_found
+# To enable command-not-found on debian based systems install the command-not-found package and uncomment the line below,
+# this isn't needed on RHEL and fedora based systems
+# source /etc/zsh_command_not_found

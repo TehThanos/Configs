@@ -32,6 +32,8 @@ map! <C-UP> <ESC> :m-2<CR>
 map <C-DOWN> :m+1<CR>
 map! <C-DOWN> <ESC> :m+1<CR>
 
+set pastetoggle=<F2>
+
 set autoread
 syntax on
 filetype plugin indent on
